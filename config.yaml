@@ -1,0 +1,27 @@
+base_dir: ''
+dataset_dir: 'datasets'  # 数据集保存的目录
+source_dir: 'sources'  # 素材保存的目录
+
+keywords_num: 10  # 做几个视频（1~10）
+day_range: 3  # 获取几天内的数据
+base_sleep_time: 1.2  # 每次请求之间的延迟（秒）
+max_retries: 3  # 最大重试次数
+concurrent_keywords: 3  # 并发获取关键词的数目
+
+# Pexels API 配置
+pexels_api_key: 'tSgSngcavT8BYIrHaOrw4eqKFYwUYCXLBdM8ByBq1VPqUlM3D1PU9Cgl'
+pexels_base_url: 'https://api.pexels.com/videos/search'
+
+# hunyuan API 配置
+hunyuan_api_key: 'sk-2hGqhEuLWNIepscScq4G41yXrHid0DfEreCqI0IEQzOpbXgy'
+hunyuan_base_url: 'https://api.hunyuan.cloud.tencent.com/v1'
+hunyuan_max_concurrent: 5 # 最大并发请求数量
+
+
+
+# index_tts环境配置
+indextts_dir: 'C:\Users\Administrator\Desktop\git\other\index-tts'  
+cpu_or_gpu: 'cpu'  # cpu或gpu
+
+voice_dir: '猫.wav' # 项目目录的相对文件路径
+outputs_dir: 'voices' # 输出文件夹名称
