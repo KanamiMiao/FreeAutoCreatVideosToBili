@@ -1,12 +1,12 @@
 # 全自动造史器
 
-AIf分析：<a herf='https://deepwiki.com/KanamiMiao/FreeAutoCreatVideosToBili'>deepwiki</a>
+<a href='https://deepwiki.com/KanamiMiao/FreeAutoCreatVideosToBili'>AI分析</a>
 
 ## 功能
-1. 获取b站信息：github上的项目<a herf='https://github.com/Nemo2011/bilibili-api'>bilibili-api</a>获取
-2. 大语言模型：使用腾讯<a herf='https://console.cloud.tencent.com/hunyuan/start'>混元大模型</a>
-3. 文本转语音：使用github上的项目：<a herf='https://github.com/rany2/edge-tts'>edge-tts</a>
-4. 视频片段资源：通过<a herf='https://www.pexels.com/api/documentation/'>Pexels API</a>获取
+1. 获取b站信息：使用github上的项目<a href='https://github.com/Nemo2011/bilibili-api'>bilibili-api</a>
+2. 大语言模型：使用腾讯<a href='https://console.cloud.tencent.com/hunyuan/start'>混元大模型</a>
+3. 文本转语音：使用github上的项目：<a href='https://github.com/rany2/edge-tts'>edge-tts</a>
+4. 视频片段资源：使用<a href='https://www.pexels.com/api/documentation/'>Pexels API</a>
 
 ## 使用方法
 
