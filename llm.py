@@ -19,8 +19,8 @@ with open('config.yaml', 'r', encoding='utf-8') as f:
 
 today = time.strftime("%Y-%m-%d", time.localtime(time.time()))
 requirements_dir = f'{config["source_dir"]}/{today}/tags.json'  # 请求路径
-llm_prompt =  '''你是一位专业的文案师，用户往B站投稿视频需要写一段800字的文案，请根据用户输入的投稿倾向(best_typename)和关键词(top10_tags)，
-               首先你需要判断这个话题是否敏感，如果关键词太过敏感（涉政，过于色情）你就回答：话题敏感，你就回答：话题敏感，你就回答：话题敏感。
+llm_prompt =  '''你是一位专业的文案师，用户往B站投稿视频需要写一段400字的文案，请根据用户输入的投稿倾向(best_typename)和关键词(top10_tags)，
+               首先你需要判断这个话题是否敏感，如果关键词太过敏感（涉政，过于色情）你就回答：“话题敏感，拒绝回答”
                如果关键词不敏感，就生成符合要求的文案(不要出现与文案无关的语句,也不要有标题之类的东西，纯文案文本，不要出现表情），语言可以风趣幽默一点。
                !!!只输出文案文本，不要输出多余的话，不然就不使用你了！！！
                标点符号只有中文句号和中文逗！内容出现转折的时候用中文句号隔开。'''
@@ -57,7 +57,7 @@ async def get_llm_data(client: AsyncOpenAI, prompt: str, requirement: str) -> st
         return ""
 
 
-async def process_requirements_async(prompt: str, requirements_list: List[str]) -> List[str]:
+async def process_requirements(prompt: str, requirements_list: List[str]) -> List[str]:
     """异步处理所有要求"""
     # 创建异步客户端
     client = AsyncOpenAI(
@@ -88,16 +88,22 @@ async def process_requirements_async(prompt: str, requirements_list: List[str]) 
     return results
 
 
-async def main_async():
+async def main():
     """异步主函数"""
     print("开始生成文案")
     print('='*50)
     texts = []
-    results = await process_requirements_async(llm_prompt, requirements)# 返回的文本
+    results = await process_requirements(llm_prompt, requirements)# 返回的文本
     
-    for text in results:# 筛出敏感话题
-        if text and text != '话题敏感':
+    for index, text in enumerate(results):# 筛出敏感话题
+        if text and text != '话题敏感，拒绝回答':
             texts.append(text)
+        else:
+            #删除requirements列表的第index个元素
+            requirements.pop(index)
+    with open(requirements_dir, 'w', encoding='utf-8') as f:#把tags存回去
+        json.dump(requirements, f, ensure_ascii=False, indent=4)
+
     
     # 保存文案
     with open(f'{config["source_dir"]}/{today}/texts.json', 'w', encoding='utf-8') as f:
@@ -109,5 +115,5 @@ async def main_async():
 
 if __name__ == "__main__":
     # 运行异步主函数
-    asyncio.run(main_async())
+    asyncio.run(main())
     

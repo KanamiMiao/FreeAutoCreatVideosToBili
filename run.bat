@@ -42,6 +42,20 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
+echo 运行 source.py...
+python source.py
+if errorlevel 1 (
+    echo tts.py 执行失败，程序退出
+    pause
+    exit /b 1
+)
+echo 运行 creat_videos.py...
+python creat_videos.py
+if errorlevel 1 (
+    echo tts.py 执行失败，程序退出
+    pause
+    exit /b 1
+)
 
 echo 所有脚本执行完成！
 pause

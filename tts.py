@@ -4,6 +4,11 @@ import yaml
 import time  
 import json  
 import os
+
+from translate import Translator
+translator = Translator(from_lang="zh", to_lang="en")
+translation = translator.translate("你好，世界！")
+print(translation)  # 输出: Hello, world!
   
 base_dir = os.path.dirname(os.path.abspath(__file__))  
 os.chdir(base_dir)  
@@ -17,10 +22,8 @@ except:
   
 # config  
 today = time.strftime("%Y-%m-%d", time.localtime(time.time()))  
-indextts_dir = config['indextts_dir']  
 texts_dir = f'{config["source_dir"]}/{today}/texts.json'  
-voice_dir = f'{base_dir}/{config["voice_dir"]}'  
-outputs_dir = f'{base_dir}/{config["source_dir"]}/{today}/{config["outputs_dir"]}'  
+outputs_dir = f'{base_dir}/{config["source_dir"]}/{today}/voices'  
   
 # 获取文案列表和输出音频路径列表  
 texts = []  

@@ -10,7 +10,7 @@ if errorlevel 1 (
 )
 
 REM 创建虚拟环境（如果不存在）
-if not exist ".venv\" (
+if not exist ".venv\Scripts\activate.bat" (
     echo 创建虚拟环境...
     python -m venv .venv
     echo 虚拟环境创建成功
@@ -40,5 +40,6 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo 依赖安装完成!
+echo 环境设置完成!
+echo 请手动运行: .venv\Scripts\activate.bat 来激活虚拟环境
 pause
