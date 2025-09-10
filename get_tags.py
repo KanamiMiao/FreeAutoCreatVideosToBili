@@ -34,7 +34,7 @@ async def process_dataset(dataset_path):
     try:
         # 读取数据
         df = pd.read_csv(dataset_path)
-        df = df[['title', 'typename', 'tag', 'play', 'favorites']]
+        df = df[['title', 'typename','typeid', 'tag', 'play', 'favorites']]
         
         # 处理 tag 列 - 更健壮的方法
         def parse_tags(tag_str):
@@ -116,11 +116,16 @@ async def process_dataset(dataset_path):
         
         # 选择最佳 typename
         best_typename = merged_sorted.iloc[0]['typename'] if len(merged_sorted) > 0 else "Unknown"
+
+        # 根据best_typename获取对应的typeid
+        typeid = df[df['typename'] == best_typename]['typeid'].tolist()[0]
         
         # 返回结果
         return {
-            'best_typename': best_typename,
-            'top10_tags': top10_tags['tag'].tolist()
+            'typename': best_typename,
+            'typeid': typeid,
+            'tags': top10_tags['tag'].tolist(),
+            'description': '该视频由程序自动生成，QWQ'
         }
     except Exception as e:
         logger.error(f"处理文件 {dataset_path} 时出错: {e}")

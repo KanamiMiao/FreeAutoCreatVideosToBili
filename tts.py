@@ -4,11 +4,6 @@ import yaml
 import time  
 import json  
 import os
-
-from translate import Translator
-translator = Translator(from_lang="zh", to_lang="en")
-translation = translator.translate("你好，世界！")
-print(translation)  # 输出: Hello, world!
   
 base_dir = os.path.dirname(os.path.abspath(__file__))  
 os.chdir(base_dir)  

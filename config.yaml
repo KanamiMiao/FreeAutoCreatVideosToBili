@@ -10,17 +10,58 @@ max_retries: 3  # 最大重试次数
 concurrent_keywords: 3  # 并发获取关键词的数目
 
 # Pexels API 配置   默认情况下，API 每小时限制 200 次请求，每月限制 20,000 次请求。
-pexels_api_key: 'tSgSngcavT8BYIrHaOrw4eqKFYwUYCXLBdM8ByBq1VPqUlM3D1PU9Cgl'
-pexels_base_url: 'https://api.pexels.com/videos/search'
+pexels_api_key: tSgSngcavT8BYIrHaOrw4eqKFYwUYCXLBdM8ByBq1VPqUlM3D1PU9Cgl
+pexels_base_url: https://api.pexels.com/videos/search
 pexels_max_concurrent: 3 # 最大并发请求数量
 pexels_sleep: 0.5  # 每次请求之间的延迟（秒）
 
 
 # hunyuan API 配置
-hunyuan_api_key: 'sk-2hGqhEuLWNIepscScq4G41yXrHid0DfEreCqI0IEQzOpbXgy'
-hunyuan_base_url: 'https://api.hunyuan.cloud.tencent.com/v1'
+hunyuan_api_key: sk-2hGqhEuLWNIepscScq4G41yXrHid0DfEreCqI0IEQzOpbXgy
+hunyuan_base_url: https://api.hunyuan.cloud.tencent.com/v1
 hunyuan_max_concurrent: 5 # 最大并发请求数量
 
 # #creat videos #我电脑带不动异步并行
 # max_create_workers: 1 #
 # max_concurrent_create_videos: 1 # 最大并发创建视频的数目
+
+
+# upload videos to bilibili
+bili_cookie: buvid3=B4A7AD3E-2432-FB06-5F68-9DF16202979E93068infoc; b_nut=1734321393; _uuid=56B35F57-B6C10-45F4-6F6E-11FBF97A188D91564infoc; rpdid=|(u)YlJm~mm)0J'u~JRJkuRJ~; enable_web_push=DISABLE; LIVE_BUVID=AUTO6417356537154342; PVID=1; DedeUserID=614351536; DedeUserID__ckMd5=610985432f636822; fingerprint=7da63b91fbca463b36895861f3935084; buvid_fp_plain=undefined; buvid_fp=7da63b91fbca463b36895861f3935084; enable_feed_channel=ENABLE; CURRENT_QUALITY=112; header_theme_version=OPEN; theme-tip-show=SHOWED; theme-avatar-tip-show=SHOWED; home_feed_column=4; buvid4=05BE460B-74DC-D1FE-C21E-704B208AE2FC35633-024121603-mLrw4/mZpXHW8Kch/0s4ug%3D%3D; SESSDATA=c2d7e45a%2C1772857274%2C8351e%2A91CjDEYUR8-xRvvsLx3fs0trwCL1KVWCwDaRK85Lqk7EcDrDqCmA5hCGaqebqWSVNI7y0SVkJDSnVwNGNYRzBfd2dXZkVpcEY5LXNraGo4aGh4dk1kak1NWnpWdzBBR3dUekEtYUpUcUhNTzFGQnozZnQ3TUdoMVpoVGQwZXBnNlJxMlNvcEQwLTFBIIEC; bili_jct=f7b09ab6c8cc5caa8bc1e33941dd17cb; sid=6wg7qhii; bili_ticket=eyJhbGciOiJIUzI1NiIsImtpZCI6InMwMyIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTc1ODkwNjMsImlhdCI6MTc1NzMyOTgwMywicGx0IjotMX0.l7bSK8XBcz3oF2u52U-s-_3tzOgXi_mrFdxrimjSYU8; bili_ticket_expires=1757589003; CURRENT_FNVAL=4048; bsource=search_baidu; bmg_af_switch=1; bmg_src_def_domain=i1.hdslb.com; bp_t_offset_614351536=1110789748038828032; b_lsid=86A3787D_199315F751D; browser_resolution=694-607
+
+
+
+
+
+
+
+# base_dir: ''
+# dataset_dir: 'datasets'  # 数据集保存的目录
+# source_dir: 'sources'  # 素材保存的目录
+
+# # bilibili
+# keywords_num: 10  # 做几个视频（1~10）
+# day_range: 3  # 获取几天内的数据
+# base_sleep_time: 1.2  # 每次请求之间的延迟（秒）
+# max_retries: 3  # 最大重试次数
+# concurrent_keywords: 3  # 并发获取关键词的数目
+
+# # Pexels API 配置   默认情况下，API 每小时限制 200 次请求，每月限制 20,000 次请求。
+# pexels_api_key: 你的api_key
+# pexels_base_url: https://api.pexels.com/videos/search
+# pexels_max_concurrent: 3 # 最大并发请求数量
+# pexels_sleep: 0.5  # 每次请求之间的延迟（秒）
+
+
+# # hunyuan API 配置
+# hunyuan_api_key: 你的api_key
+# hunyuan_base_url: https://api.hunyuan.cloud.tencent.com/v1
+# hunyuan_max_concurrent: 5 # 最大并发请求数量
+
+# # #creat videos #我电脑带不动异步并行
+# # max_create_workers: 1 #
+# # max_concurrent_create_videos: 1 # 最大并发创建视频的数目
+
+
+# # upload videos to bilibili
+# bili_cookie: 你的cookie

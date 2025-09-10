@@ -19,12 +19,13 @@ with open('config.yaml', 'r', encoding='utf-8') as f:
 
 today = time.strftime("%Y-%m-%d", time.localtime(time.time()))
 requirements_dir = f'{config["source_dir"]}/{today}/tags.json'  # 请求路径
-llm_prompt =  '''你是一位专业的文案师，用户往B站投稿视频需要写一段400字的文案，请根据用户输入的投稿倾向(best_typename)和关键词(top10_tags)，
+llm_prompt =  '''你是一位专业的文案师，用户往B站投稿视频需要写一段600字的文案，请根据用户输入的投稿倾向(typename)和关键词(tags)，
                首先你需要判断这个话题是否敏感，如果关键词太过敏感（涉政，过于色情）你就回答：“话题敏感，拒绝回答”
                如果关键词不敏感，就生成符合要求的文案(不要出现与文案无关的语句,也不要有标题之类的东西，纯文案文本，不要出现表情），语言可以风趣幽默一点。
                !!!只输出文案文本，不要输出多余的话，不然就不使用你了！！！
                标点符号只有中文句号和中文逗！内容出现转折的时候用中文句号隔开。'''
 
+llm_prompt2 = '请根据文案生成5-10字的标题，不要出现与标题无关的语句，不要出现表情。'
 requirements = []
 with open(requirements_dir, 'r', encoding='utf-8') as f:
     requirements = json.load(f)
@@ -93,7 +94,7 @@ async def main():
     print("开始生成文案")
     print('='*50)
     texts = []
-    results = await process_requirements(llm_prompt, requirements)# 返回的文本
+    results = await process_requirements(llm_prompt, requirements)# 生成文案
     
     for index, text in enumerate(results):# 筛出敏感话题
         if text and text != '话题敏感，拒绝回答':
@@ -101,6 +102,13 @@ async def main():
         else:
             #删除requirements列表的第index个元素
             requirements.pop(index)
+
+
+    print("开始生成标题")
+    print('='*50)
+    results = await process_requirements(llm_prompt2, texts)# 生成标题
+    for dic, title in zip(requirements, results):
+        dic['title'] = title
     with open(requirements_dir, 'w', encoding='utf-8') as f:#把tags存回去
         json.dump(requirements, f, ensure_ascii=False, indent=4)
 

@@ -339,7 +339,7 @@ async def get_videos():
     # 创建所有任务
     tasks = []
     for tags, folder_dir in zip(tags_list, folder_dir_list):
-        for index, tag in enumerate(tags['top10_tags']):
+        for index, tag in enumerate(tags['tags']):
             # 为每个标签创建一个任务
             task = process_tag(tags, folder_dir, index, tag)
             tasks.append(task)
